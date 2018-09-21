@@ -1,0 +1,72 @@
+body
+{
+    margin: 0px;
+    background: black;
+}
+
+#grid {
+    display: grid;
+    grid-template-rows: 60px 1fr;
+    height: 100vh;
+}
+
+#container
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgb(249, 154, 102);
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
+    z-index: 10;
+}
+
+#imageContainer
+{
+    display: none;
+
+    align-items: center;
+    justify-items: center;
+
+    overflow: scroll;
+    background-image: url(background_light.png);
+}
+
+#imageDownloadLink {
+    margin-right: 15px;
+}
+
+.btn
+{
+    display: inline-block;
+    
+    outline: none;
+
+    border: 1px solid white;
+    border-radius: 10px;
+
+    padding: 6px 20px;
+
+    background: transparent;
+    color: white;
+    opacity: 0.7;
+
+    /* font-size: 20px; */
+
+    cursor: pointer;
+    transition: .5s;
+}
+
+.btn:hover {
+    opacity: 1;
+}
+
+#screenShotBtn {
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    margin-right: 0px;
+}
+
+#fullScreenShotBtn {
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
