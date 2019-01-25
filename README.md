@@ -11,4 +11,4 @@ Screenshot your pc's screen from any device
 
 #### using
     open web browser and paste host:port that was console.logged
-    node devss --help for help
+    devss --help for help
