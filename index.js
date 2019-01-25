@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 var fs = require("fs");
 var mime = require("mime-types");
 
@@ -12,7 +14,10 @@ const help = require("./help.txt");
 // host:port
 
 var host = ip.address();
+var localhost = "127.0.0.1";
 var port = 8080;
+
+process.chdir(__dirname);
 
 // processing command line arguments
 
@@ -26,7 +31,7 @@ for (let [index, arg] of process.argv.entries()) {
 		host = process.argv[index + 1];
 	}
 
-	if (arg == "--help" || arg == "-?") {
+	if (arg == "--help" || arg == "-?" || arg == "/?" || arg == "/help" || arg == "/h") {
 		console.log(help);
 		process.exit(0);
 	}
@@ -39,9 +44,11 @@ var server = http.createServer(requestHandler);
 // start listening
 
 try {
-	server.listen(port, host, 0, () => {
+	server.listen(port, '0.0.0.0', 0, () => {
+		console.log(`Running on ${localhost}:${port}`);
 		console.log(`Running on ${host}:${port}`);
 	});
+
 }
 catch(e) {
 	console.error("Error:", e.message);
@@ -71,36 +78,40 @@ function executeScreenshotter(args, req, resp) {
 		return;
 	}
 
-	resp.writeHead(200, {"Content-Type": "image/png"});
+	resp.writeHead(200, { "Content-Type": "image/png" });
 	resp.write(buffer);
 	resp.end();
 }
 
 function requestHandler(req, resp) {
+	let filename = "";
+
 	if (req.method == "GET") {
 
 		// screenshot
 	
 		if (req.url == "/screenshot") {
 
-			console.log("Taking screenshot...");
+			console.log(`Cropped screenshot [${req.connection.remoteAddress}]`);
 			executeScreenshotter([], req, resp);
 			return;
 		}
 
 		if (req.url == "/fullscreenshot") {
-			console.log("Taking full screenshot...");
+			console.log(`Full screenshot [${req.connection.remoteAddress}]`);
 			executeScreenshotter(["--full-screen"], req, resp);
 			return;
 		}
 	
 		// root document
 	
-		if (req.url == "/") req.url = "/web/index.html";
+		filename = req.url;
+
+		if (filename == "/") filename = "/web/index.html";
 		
 		// file request handling
 	
-		fs.readFile(req.url.substring(1), (err, data) => {
+		fs.readFile(filename.substring(1), (err, data) => {
 			if (err) {
 				resp.statusCode = 404;
 				resp.end();
@@ -108,7 +119,7 @@ function requestHandler(req, resp) {
 			}
 			
 			resp.statusCode = 200;
-			resp.setHeader("Content-Type", mime.lookup(path.extname(req.url)) || "application/octet-stream");
+			resp.setHeader("Content-Type", mime.lookup(path.extname(filename)) || "application/octet-stream");
 			resp.write(data);
 			resp.end();
 		});
