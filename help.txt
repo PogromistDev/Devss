@@ -1,5 +1,5 @@
 module.exports = 
-`--help/-?
+`--help -? /? /h /help
 	this help information
 -a/-h
 	change address

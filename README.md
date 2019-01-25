@@ -1,13 +1,13 @@
 # Devss
 ![alt text](web/icon.png)
 
-Screenshot your pc's screen from any device (mainly smartphone)
+Screenshot your pc's screen from any device
 
 #### installation
-    $ npm install
+    $ npm install -g
    
 #### run
-    $ node devss
+    $ devss
 
 #### using
     open web browser and paste host:port that was console.logged
