@@ -31,7 +31,7 @@ for (let [index, arg] of process.argv.entries()) {
 		host = process.argv[index + 1];
 	}
 
-	if (arg == "--help" || arg == "-?" || arg == "/?" || arg == "/help" || arg == "/h") {
+	if (["--help", "-?", "/?", "/help", "/h"].includes(arg)) {
 		console.log(help);
 		process.exit(0);
 	}
