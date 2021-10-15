@@ -1,14 +1,21 @@
 # Devss
-![alt text](web/icon.png)
+![icon](web/icon.png)
 
-Screenshot your pc's screen from any device
-
+Take screenshots of your computer screen remotely with a web ui accessable from any device
+#### requirements
+    windows operating system
+    node.js
+    dot net framework
 #### installation
-    $ npm install -g
-   
-#### run
-    $ devss
-
-#### using
-    open web browser and paste host:port that was console.logged
-    devss --help for help
+```console
+npm install -g
+```
+#### usage
+```console
+devss
+```
+    open web browser from any device and enter <host:port> ip address to access web ui
+```console
+devss --help
+```
+    show help message
