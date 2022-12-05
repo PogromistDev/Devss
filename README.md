@@ -5,16 +5,16 @@ Take screenshots of your computer screen remotely with a web ui accessable from 
 #### requirements
     windows operating system
     node.js
-    dot net framework
+    .net framework
 #### installation
 ```console
 npm install -g
 ```
 #### usage
 ```console
-devss
+devss -n <name of the network interface> --show-qr-code
 ```
-    open web browser from any device and enter <host:port> ip address to access web ui
+    open web browser from any device and enter <ip-address:port> (or scan qr code) to access web ui
 ```console
 devss --help
 ```
