@@ -4,7 +4,8 @@
 	"description": "Screenshot your pc's screen from any device",
 	"dependencies": {
 		"ip": "^1.1.5",
-		"mime-types": "^2.1.20"
+		"mime-types": "^2.1.20",
+		"qrcode": "^1.5.1"
 	},
 	"bin": {
 		"devss": "./index.js"

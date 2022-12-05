@@ -1,7 +1,11 @@
-module.exports = 
+module.exports =
 `--help -? /? /h /help
 	this help information
--a/-h
-	change address
--p 
-	change port`;
+-n --name --in --interface-name
+	the name of a network interface to pull ip address from
+-a -h --ip --address --host --ip-address
+	change ip address
+-p --port
+	change port
+--show-qr-code --qr
+	show qr code of address and port for quick access to devss from a phone`;
