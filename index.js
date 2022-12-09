@@ -76,7 +76,7 @@ try {
 			console.log(`Running on ${host}:${port}`);
 			if (showQR) {
 
-				QRCode.toString(`http://${host}:${port}"`, { type: 'terminal' }, (err, url) => {
+				QRCode.toString(`http://${host}:${port}`, { type: 'terminal' }, (err, url) => {
 					if (!err) console.log("\n" + url);
 				});
 
