@@ -3,7 +3,7 @@
 	"version": "1.0.1",
 	"description": "Screenshot your pc's screen from any device",
 	"dependencies": {
-		"ip": "^1.1.5",
+		"ip": "^2.0.1",
 		"mime-types": "^2.1.20",
 		"qrcode": "^1.5.1"
 	},
